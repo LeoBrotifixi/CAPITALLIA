@@ -1,1 +1,1 @@
-# CAPITALLIA - Projeto financeiro
+# CAPITALLIA - Projeto financeiro interativo
