@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-apple-gray text-apple-black font-sans;
+    font-feature-settings: "kern", "liga", "calt";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Tema Escuro - Galáxia */
+  body.dark-theme {
+    @apply bg-galaxy-black text-white font-sans;
+    background-size: 200% 200%;
+    background-position: 0% 0%;
+    position: relative;
+  }
+  
+  /* Efeito de estrelas no fundo */
+  body.dark-theme::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.2;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-apple-black tracking-tight;
+  }
+
+  body.dark-theme h1, 
+  body.dark-theme h2, 
+  body.dark-theme h3, 
+  body.dark-theme h4, 
+  body.dark-theme h5, 
+  body.dark-theme h6 {
+    @apply text-white tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl font-semibold;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-semibold;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl font-medium;
+  }
+
+  h5 {
+    @apply text-lg md:text-xl font-medium;
+  }
+
+  h6 {
+    @apply text-base md:text-lg font-medium;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-5 mx-auto max-w-7xl;
+  }
+
+  .btn {
+    @apply px-6 py-3 rounded-apple font-medium transition-all duration-200 focus:outline-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-apple-black border border-secondary-200 hover:bg-secondary-50;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent-500 text-white hover:bg-accent-600;
+  }
+
+  .card {
+    @apply bg-white rounded-apple shadow-apple p-6 border border-secondary-100;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 border border-secondary-200 rounded-apple focus:ring-2 focus:ring-primary-600 focus:border-primary-600 outline-none bg-white;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-apple-black mb-2;
+  }
+  
+  /* Apple-style section spacing */
+  .section {
+    @apply py-16 md:py-24;
+  }
+  
+  /* Modern Apple-style gradient background */
+  .bg-apple-gradient {
+    @apply bg-gradient-to-br from-primary-600 to-primary-700;
+  }
+  
+  /* Apple style soft card */
+  .card-soft {
+    @apply bg-white bg-opacity-80 backdrop-blur-lg rounded-apple shadow-apple p-6;
+  }
+
+  /* Tema escuro - Galáxia */
+  .dark-theme .container {
+    @apply relative z-10;
+  }
+
+  .dark-theme .btn-primary {
+    @apply btn bg-neon-blue text-white hover:bg-neon-purple shadow-neon-blue;
+  }
+
+  .dark-theme .btn-secondary {
+    @apply btn bg-galaxy-darkblue text-white border border-neon-purple hover:border-neon-blue hover:shadow-neon-blue;
+  }
+
+  .dark-theme .btn-accent {
+    @apply btn bg-neon-pink text-white hover:bg-neon-purple shadow-neon-pink;
+  }
+
+  .dark-theme .card {
+    @apply bg-galaxy-darkblue/70 backdrop-blur-md rounded-apple shadow-none border-0 text-white relative overflow-hidden;
+  }
+
+  .dark-theme .input {
+    @apply bg-galaxy-black/80 text-white border-neon-purple focus:border-neon-blue focus:ring-neon-blue;
+  }
+
+  .dark-theme .label {
+    @apply text-white/80;
+  }
+
+  /* Cartão com borda neon brilhante */
+  .card-galaxy {
+    @apply bg-galaxy-darkblue/70 backdrop-blur-md rounded-apple p-6 text-white relative border-0 overflow-hidden;
+    position: relative;
+  }
+
+  .card-galaxy::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(90deg, var(--tw-gradient-stops));
+    --tw-gradient-from: #00DDFF;
+    --tw-gradient-to: #FF00C7;
+    --tw-gradient-stops: var(--tw-gradient-from), #8A2BE2, var(--tw-gradient-to);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    background-size: 200% 200%;
+    animation: shimmer 6s linear infinite;
+    z-index: 0;
+  }
+
+  .card-galaxy > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Cartão com fundo nebuloso */
+  .card-nebula {
+    @apply bg-nebula-gradient rounded-apple p-6 text-white shadow-galaxy-card relative overflow-hidden;
+    background-size: 200% 200%;
+    animation: shimmer 15s linear infinite;
+  }
+
+  /* Stars animation in the background */
+  .stars-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stars-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(1px 1px at 25% 25%, white 2%, transparent 0%),
+      radial-gradient(1px 1px at 75% 75%, white 2%, transparent 0%),
+      radial-gradient(2px 2px at 10% 90%, white 1%, transparent 0%),
+      radial-gradient(2px 2px at 90% 10%, white 1%, transparent 0%),
+      radial-gradient(3px 3px at 50% 50%, white 1%, transparent 0%);
+    background-size: 200px 200px;
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+    animation: starPulse 4s ease-in-out infinite;
+    opacity: 0.3;
+    z-index: -1;
+  }
+
+  /* Título com gradiente de texto para tema escuro */
+  .dark-theme .title-gradient {
+    @apply font-bold;
+    background: linear-gradient(90deg, #00DDFF, #8A2BE2, #FF00C7);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shimmer 6s linear infinite;
+  }
+} 
+
+/* Animação de pulsação para ícones e elementos decorativos */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Efeito de floating para cartões */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Efeito de trilha para cursor */
+.cursor-trail {
+  pointer-events: none;
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(138, 43, 226, 0.6);
+  border-radius: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  filter: blur(2px);
+  transition: opacity 0.3s ease;
+} 
